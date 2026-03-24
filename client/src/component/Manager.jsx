@@ -18,7 +18,7 @@ const Manager = () => {
       const token = localStorage.getItem('token');
       if (!token) return; 
 
-      const res = await axios.get('http://localhost:3000/api/vault', {
+      const res = await axios.get('https://password-manager-backend-jijk.onrender.com/api/vault', {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -42,11 +42,11 @@ const Manager = () => {
 
         if (editingId) {
           // UPDATE: If we are editing, send a PUT request
-          await axios.put(`http://localhost:3000/api/vault/${editingId}`, form, config);
+          await axios.put(`https://password-manager-backend-jijk.onrender.com/api/vault/${editingId}`, form, config);
           setEditingId(null); // Reset the editing state
         } else {
           // CREATE: If we are not editing, send a POST request
-          await axios.post('http://localhost:3000/api/vault', form, config);
+          await axios.post('https://password-manager-backend-jijk.onrender.com/api/vault', form, config);
         }
 
         // Clear the form and re-fetch the updated vault
@@ -65,7 +65,7 @@ const Manager = () => {
     if (confirmDelete) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:3000/api/vault/${id}`, {
+        await axios.delete(`https://password-manager-backend-jijk.onrender.com/api/vault/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         

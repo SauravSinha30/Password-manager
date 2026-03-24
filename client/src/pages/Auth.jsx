@@ -17,12 +17,12 @@ const Auth = () => {
     e.preventDefault();
     try {
         if (isLogin) {
-        const res = await axios.post('http://localhost:3000/api/auth/login', { email: form.email, password: form.password });
+        const res = await axios.post('https://password-manager-backend-jijk.onrender.com/api/auth/login', { email: form.email, password: form.password });
         localStorage.setItem('token', res.data.token);
         navigate('/'); // Redirect to Manager
         } else {
         // ... check confirmPassword ...
-        const res = await axios.post('http://localhost:3000/api/auth/register', { email: form.email, password: form.password });
+        const res = await axios.post('https://password-manager-backend-jijk.onrender.com/api/auth/register', { email: form.email, password: form.password });
         localStorage.setItem('token', res.data.token);
         navigate('/'); // Redirect to Manager
         }
