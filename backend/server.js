@@ -11,7 +11,14 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:3000', 
+    'https://password-manager-frontend-58tc.onrender.com' // Your live frontend
+  ],
+  credentials: true
+}));
 
 // 1. Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/vaultDB')
